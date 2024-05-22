@@ -5,6 +5,9 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// init items with those items: [a,b,c,d]
+var items = []string{"a", "b", "c", "d"}
+
 func main() {
 	router := gin.Default()
 	router.GET("/items", getItem)
@@ -13,5 +16,6 @@ func main() {
 }
 
 func getItem(c *gin.Context) {
-	c.IndentedJSON(http.StatusOK, "Welcome, Go navigator, to the Anythink cosmic catalog.")
+	// return items as json
+	c.IndentedJSON(http.StatusOK, items)
 }
