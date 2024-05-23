@@ -5,7 +5,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// init items with those items: [a,b,c,d]
 var items = []string{"a", "b", "c", "d"}
 
 func main() {
