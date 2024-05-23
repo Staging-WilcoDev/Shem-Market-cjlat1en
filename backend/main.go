@@ -7,8 +7,9 @@ import (
 
 func main() {
 	router := gin.Default()
-	router.GET("/items", getItem)
+	router.GET("/items", getItems)
 	router.HEAD("/healthcheck", healthcheck)
+	reouter.POST("/items", addItem)
 
 	router.Run()
 }
@@ -30,6 +31,18 @@ var items = []struct {
 	{4, "Starlight Lantern"},
 }
 
-func getItem(c *gin.Context) {
+func getItems(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, items)
+}
+
+func addItem(c *gin.Context) {
+	var item struct {
+		Name string `json:"name"`
+	}
+	if err := c.BindJSON(&item); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	items = append(items, item)
+	c.JSON(http.StatusCreated, item)
 }
