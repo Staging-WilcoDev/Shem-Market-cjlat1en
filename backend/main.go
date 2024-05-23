@@ -9,7 +9,7 @@ func main() {
 	router := gin.Default()
 	router.GET("/items", getItems)
 	router.HEAD("/healthcheck", healthcheck)
-	reouter.POST("/items", addItem)
+	router.POST("/items", addItem)
 
 	router.Run()
 }
