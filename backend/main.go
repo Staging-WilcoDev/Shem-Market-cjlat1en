@@ -12,6 +12,9 @@ func main() {
 	router.Run()
 }
 
+// store items a,b,c and d in an array
+var items = []string{"a", "b", "c", "d"}
+
 func getItem(c *gin.Context) {
-	c.IndentedJSON(http.StatusOK, "Welcome, Go navigator, to the Anythink cosmic catalog.")
+	c.IndentedJSON(http.StatusOK, items)
 }
