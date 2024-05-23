@@ -21,7 +21,6 @@ var items = []struct {
 	{2, "Meteor Muffins"},
 	{3, "Alien Antenna Kit"},
 	{4, "Starlight Lantern"},
-	{5, "Quantum Quill"},
 }
 
 func getItem(c *gin.Context) {
