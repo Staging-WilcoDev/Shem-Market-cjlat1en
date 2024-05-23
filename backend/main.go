@@ -11,7 +11,7 @@ func main() {
 	router.GET("/items", getItems)
 	router.HEAD("/healthcheck", healthcheck)
 	router.POST("/item", addItem)
-	router.GET("/item/:id", getItemByID)
+	router.GET("/items/:id", getItemByID)
 	// router.GET("/items/popular", getPopularItem)
 
 	router.Run()
