@@ -12,8 +12,17 @@ func main() {
 	router.Run()
 }
 
-// store items a,b,c and d in an array
-var items = []string{"a", "b", "c", "d"}
+// create a variable that store those itemm name:  'Galactic Goggles', 'Meteor Muffins', 'Alien Antenna Kit', 'Starlight Lantern', and 'Quantum Quill' and an id
+var items = []struct {
+	ID   int    `json:"id"`
+	Name string `json:"name"`
+}{
+	{1, "Galactic Goggles"},
+	{2, "Meteor Muffins"},
+	{3, "Alien Antenna Kit"},
+	{4, "Starlight Lantern"},
+	{5, "Quantum Quill"},
+}
 
 func getItem(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, items)
