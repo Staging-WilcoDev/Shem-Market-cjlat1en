@@ -12,7 +12,7 @@ func main() {
 	router.HEAD("/healthcheck", healthcheck)
 	router.POST("/item", addItem)
 	router.GET("/items/:id", getItemByID)
-	// router.GET("/items/popular", getPopularItem)
+	router.GET("/items/popular", getPopularItem)
 
 	router.Run()
 }
