@@ -8,8 +8,15 @@ import (
 func main() {
 	router := gin.Default()
 	router.GET("/items", getItem)
+	router.HEAD("/healthcheck", healthcheck)
 
 	router.Run()
+}
+
+func healthcheck(c *gin.Context) {
+	c.JSON(http.StatusOK, gin.H{
+		"status": "ok",
+	})
 }
 
 // create a variable that store those itemm name:  'Galactic Goggles', 'Meteor Muffins', 'Alien Antenna Kit', 'Starlight Lantern', and 'Quantum Quill' and an id
