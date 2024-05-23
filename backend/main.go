@@ -8,10 +8,28 @@ import (
 func main() {
 	router := gin.Default()
 	router.GET("/items", getItem)
+	router.HEAD("/healthcheck", healthcheck)
 
 	router.Run()
 }
 
+func healthcheck(c *gin.Context) {
+	c.JSON(http.StatusOK, gin.H{
+		"status": "ok",
+	})
+}
+
+// create a variable that store those itemm name:  'Galactic Goggles', 'Meteor Muffins', 'Alien Antenna Kit', 'Starlight Lantern', and 'Quantum Quill' and an id
+var items = []struct {
+	ID   int    `json:"id"`
+	Name string `json:"name"`
+}{
+	{1, "Galactic Goggles"},
+	{2, "Meteor Muffins"},
+	{3, "Alien Antenna Kit"},
+	{4, "Starlight Lantern"},
+}
+
 func getItem(c *gin.Context) {
-	c.IndentedJSON(http.StatusOK, "Welcome, Go navigator, to the Anythink cosmic catalog.")
+	c.IndentedJSON(http.StatusOK, items)
 }
